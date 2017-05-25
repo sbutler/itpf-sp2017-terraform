@@ -1,0 +1,10 @@
+#cloud-config
+
+packages:
+    -
+
+write_files:
+    - path: /etc/opt/uiuc-techservices/efs/sharedfs.conf
+      owner: root:root
+      permission: '0644'
+      content:
