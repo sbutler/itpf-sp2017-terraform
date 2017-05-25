@@ -21,7 +21,7 @@ resource "aws_instance" "example" {
 /*
 data "aws_ami" "amazon_linux" {
     most_recent = true
-    owner = "amazon"
+    owners = [ "amazon" ]
 
     # Place filters here
 }
