@@ -15,6 +15,18 @@ resource "aws_instance" "example" {
 # Data
 # ===================================================================
 
+# Get the latest Amazon Linux AMI
+#
+# https://www.terraform.io/docs/providers/aws/d/ami.html
+/*
+data "aws_ami" "amazon_linux" {
+    most_recent = true
+    owner = "amazon"
+
+    # Place filters here
+}
+*/
+
 # Render a cloud-init config template with our EFS filesystem id
 #
 # https://www.terraform.io/docs/providers/template/d/file.html
@@ -40,3 +52,4 @@ data "template_cloudinit_config" "userdata" {
         content_type = "text/x-shellscript"
     }
 }
+*/
