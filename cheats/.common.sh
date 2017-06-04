@@ -1,5 +1,5 @@
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[-1]}")" && pwd)"
-SCRIPT_NAME="$(basename "${BASH_SOURCE[-1]}" .sh)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_NAME="$(basename "$0" .command)"
 NEW_BRANCH_NAME="$SCRIPT_NAME"
 
 echo "NEW_BRANCH_NAME = $NEW_BRANCH_NAME"
