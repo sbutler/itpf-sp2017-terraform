@@ -8,6 +8,10 @@
 resource "aws_instance" "example" {
     # Add the required attributes here, with values.
     # ami, instance_type, key_name
+
+    ami = "ami-7bfcd81e"
+    instance_type = "t2.micro"
+    key_name = "workshop"
 }
 
 
