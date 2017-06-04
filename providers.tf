@@ -13,6 +13,10 @@ provider "aws" {
     #
     # access_key = "changeme"
     # secret_key = "changeme"
+    #
+    # Instead of specifying the above keys, consider configuring the AWS CLI:
+    #
+    # http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 
     region = "us-east-2"
 }
