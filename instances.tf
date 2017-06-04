@@ -12,6 +12,11 @@ resource "aws_instance" "example" {
     ami = "ami-7bfcd81e"
     instance_type = "t2.micro"
     key_name = "workshop"
+
+    tags {
+        Name = "terraform example"
+        NetID = "itpf-wp"
+    }
 }
 
 
