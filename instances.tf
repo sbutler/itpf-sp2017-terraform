@@ -14,7 +14,7 @@ resource "aws_instance" "example" {
     key_name = "workshop"
 
     tags {
-        Name = "terraform example"
+        Name = "itpf-wp terraform example"
         NetID = "itpf-wp"
     }
 }
