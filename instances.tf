@@ -23,7 +23,23 @@ data "aws_ami" "amazon_linux" {
     most_recent = true
     owners = [ "amazon" ]
 
-    # Place filters here
+    # All new instance types are HVM; selected only images for that type
+    filter {
+        name = "virtualization-type"
+        values = [ "hvm" ]
+    }
+    # Only consider 64bit images
+	filter {
+        name = "architecture"
+        values = [ "x86_64"]
+    }
+
+    # Add a filter that will match these "name" attribute values:
+    #
+    # amzn-ami-hvm-2016.09.1.20161221-x86_64-gp2
+    # amzn-ami-hvm-2017.03.0.20170417-x86_64-gp2
+    # amzn-ami-hvm-2016.09.0.20161028-x86_64-gp2
+    # amzn-ami-hvm-2016.09.0.20160923-x86_64-gp2
 }
 */
 
