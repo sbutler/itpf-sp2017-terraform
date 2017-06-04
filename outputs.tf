@@ -13,3 +13,11 @@
 # output "foo" {
 #     value = "${var.foo}"
 # }
+
+output "example_id" {
+    value = "${aws_instance.example.id}"
+}
+
+output "example_public_ip" {
+    value = "${aws_instance.example.public_ip}"
+}
