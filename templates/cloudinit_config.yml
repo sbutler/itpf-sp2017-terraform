@@ -1,10 +1,11 @@
 #cloud-config
 
 packages:
-    -
+    - nfs-utils
 
 write_files:
     - path: /etc/opt/uiuc-techservices/efs/sharedfs.conf
       owner: root:root
       permission: '0644'
-      content:
+      content: |
+        efs_filesystem_id=${efs_id}

@@ -28,3 +28,8 @@ variable "instance_type" {
     type = "string"
     description = "EC2 Instance type name."
 }
+
+variable "sharedfs_id" {
+    type = "string"
+    description = "Elastic FileSystem ID for the shared volume."
+}
