@@ -59,7 +59,9 @@ data "aws_ami" "amazon_linux" {
 # https://www.terraform.io/docs/providers/template/d/file.html
 /*
 data "template_file" "cloudinit_config" {
-    # Add "template" and "vars" here
+    template = "${file("templates/cloudinit_config.yml")}"
+
+    # Add "vars" here
 }
 */
 
@@ -71,12 +73,15 @@ data "template_cloudinit_config" "userdata" {
     # attribute to complete it.
     part {
         content_type = "text/cloud-config"
+        content = "${data.template_file.cloudinit_config.rendered}"
     }
 
     # MIME part for the run once script that will setup the mount for our
-    # EFS. Add the "filename" and "content" attributes to complete it.
+    # EFS.
     part {
         content_type = "text/x-shellscript"
+        filename = "efs.sh"
+        content = "${file("files/efs.sh")}"
     }
 }
 */
