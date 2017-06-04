@@ -10,12 +10,12 @@ resource "aws_instance" "example" {
     # ami, instance_type, key_name
 
     ami = "ami-7bfcd81e"
-    instance_type = "t2.micro"
-    key_name = "workshop"
+    instance_type = "${var.instance_type}"
+    key_name = "${var.key_name}"
 
     tags {
         Name = "terraform example"
-        NetID = "itpf-wp"
+        NetID = "${var.netid}"
     }
 }
 

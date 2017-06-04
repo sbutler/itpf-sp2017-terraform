@@ -13,3 +13,18 @@
 #     type = "string"
 #     description = "A little variable named 'foo'."
 # }
+
+variable "netid" {
+    type = "string"
+    description = "Contact for resources in this config."
+}
+
+variable "key_name" {
+    type = "string"
+    description = "EC2 Key Name for the SSH key for instances."
+}
+
+variable "instance_type" {
+    type = "string"
+    description = "EC2 Instance type name."
+}
