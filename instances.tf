@@ -9,7 +9,7 @@ resource "aws_instance" "example" {
     # Add the required attributes here, with values.
     # ami, instance_type, key_name
 
-    ami = "ami-7bfcd81e"
+    ami = "${data.aws_ami.amazon_linux.id}"
     instance_type = "${var.instance_type}"
     key_name = "${var.key_name}"
 
@@ -27,7 +27,6 @@ resource "aws_instance" "example" {
 # Get the latest Amazon Linux AMI
 #
 # https://www.terraform.io/docs/providers/aws/d/ami.html
-/*
 data "aws_ami" "amazon_linux" {
     most_recent = true
     owners = [ "amazon" ]
@@ -49,8 +48,11 @@ data "aws_ami" "amazon_linux" {
     # amzn-ami-hvm-2017.03.0.20170417-x86_64-gp2
     # amzn-ami-hvm-2016.09.0.20161028-x86_64-gp2
     # amzn-ami-hvm-2016.09.0.20160923-x86_64-gp2
+    filter {
+        name = "name"
+        values = [ "amzn-ami-*-gp2" ]
+    }
 }
-*/
 
 # Render a cloud-init config template with our EFS filesystem id
 #
