@@ -2,8 +2,8 @@
 # command. It is as if you specified "-var-file terraform.tfvars" on the command
 # line.
 
-/*
 instance_type = "t2.micro"
 key_name = "workshop"
 sharedfs_id = "fs-6752b01e"
-*/
+
+netid = "itpf-wp"

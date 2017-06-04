@@ -14,7 +14,7 @@ resource "aws_instance" "example" {
     key_name = "${var.key_name}"
 
     tags {
-        Name = "terraform example"
+        Name = "${var.netid} terraform example"
         NetID = "${var.netid}"
     }
 }
