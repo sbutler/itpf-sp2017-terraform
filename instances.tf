@@ -23,7 +23,23 @@ data "aws_ami" "amazon_linux" {
     most_recent = true
     owners = [ "amazon" ]
 
-    # Place filters here
+    # All new instance types are HVM; selected only images for that type
+    filter {
+        name = "virtualization-type"
+        values = [ "hvm" ]
+    }
+    # Only consider 64bit images
+	filter {
+        name = "architecture"
+        values = [ "x86_64"]
+    }
+
+    # Add a filter that will match these "name" attribute values:
+    #
+    # amzn-ami-hvm-2016.09.1.20161221-x86_64-gp2
+    # amzn-ami-hvm-2017.03.0.20170417-x86_64-gp2
+    # amzn-ami-hvm-2016.09.0.20161028-x86_64-gp2
+    # amzn-ami-hvm-2016.09.0.20160923-x86_64-gp2
 }
 */
 
@@ -32,7 +48,9 @@ data "aws_ami" "amazon_linux" {
 # https://www.terraform.io/docs/providers/template/d/file.html
 /*
 data "template_file" "cloudinit_config" {
-    # Add "template" and "vars" here
+    template = "${file("templates/cloudinit_config.yml")}"
+
+    # Add "vars" here
 }
 */
 
@@ -44,12 +62,15 @@ data "template_cloudinit_config" "userdata" {
     # attribute to complete it.
     part {
         content_type = "text/cloud-config"
+        content = "${data.template_file.cloudinit_config.rendered}"
     }
 
     # MIME part for the run once script that will setup the mount for our
-    # EFS. Add the "filename" and "content" attributes to complete it.
+    # EFS.
     part {
         content_type = "text/x-shellscript"
+        filename = "efs.sh"
+        content = "${file("files/efs.sh")}"
     }
 }
 */
